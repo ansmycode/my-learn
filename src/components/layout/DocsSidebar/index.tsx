@@ -2,36 +2,17 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
-// 侧边栏目录结构配置
-const docsMenu = [
-  {
-    key: 1,
-    title: "JavaScript核心",
-    items: [
-      { name: "Promise实现", path: "/docs/promise" },
-      { name: "原型链", path: "/docs/prototype" },
-    ],
-  },
-  {
-    key: 2,
-    title: "React进阶",
-    items: [
-      { name: "useMemo原理", path: "/docs/useMemo" },
-      { name: "Fiber架构", path: "/docs/fiber" },
-    ],
-  },
-];
+import { docsMenu } from "@/common/common";
 
 export default function DocsSidebar() {
   const pathname = usePathname();
-  const [menuList, setMenuList] = useState(docsMenu);
+  const [menuList] = useState(docsMenu);
   const [menuActiveList, setMenuActiveList]: Array<any> = useState([2]);
   console.log(menuActiveList);
   return (
     <aside className="w-48 border-r bg-white dark:bg-gray-800 overflow-y-auto">
       <nav className="pt-4 pb-4">
-        {menuList.map((section) => (
+        {menuList.map((section: DocsMenu) => (
           <div key={section.key} className="mb-6">
             <h3
               className="flex text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2 cursor-pointer items-center"
