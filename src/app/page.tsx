@@ -2,7 +2,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { docsMenu } from "@/common/common";
+import { docsMenu, HomeDescList } from "@/common/common";
+import SlidingBox from "@/components/SlidingBox";
+import TimelineItem from "@/components/TimelineItem";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   const [experiments] = useState(
@@ -38,7 +42,7 @@ export default function Home() {
       </section>
 
       {/* 实验项目展示 - 纯CSS悬停效果 */}
-      <section className="max-w-6xl mx-auto px-4 pb-20">
+      <section className="max-w-6xl mx-auto px-4 pb-10">
         <h2 className="text-2xl font-bold mb-8 text-gray-800 dark:text-gray-200">
           最近的实验
           <span className="ml-2 text-sm text-blue-500 animate-pulse">
@@ -46,38 +50,44 @@ export default function Home() {
           </span>
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {experiments.map((exp, index) => (
-            <a
-              key={exp.title}
-              href={exp.path}
-              className="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-            >
-              <div className="flex items-start">
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200 group-hover:text-blue-500 transition-colors">
-                    {exp.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-4">
-                    {exp.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {exp.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1 text-sm bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full transition-colors hover:bg-blue-200 dark:hover:bg-blue-800"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+        <div className="">
+          <SlidingBox
+            spacing="gap-6"
+            className="px-2 py-2"
+            diyClassName="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+          >
+            {experiments.map((exp) => (
+              <Link
+                key={exp.path}
+                href={exp.path}
+                // className=""
+              >
+                <div className="flex items-start">
+                  <div className="flex-1">
+                    <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200 group-hover:text-blue-500 transition-colors">
+                      {exp.title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400 mb-4">
+                      {exp.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {exp.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-3 py-1 text-sm bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full transition-colors hover:bg-blue-200 dark:hover:bg-blue-800"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="ml-5 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <ArrowRight />
                   </div>
                 </div>
-                <div className="ml-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span className="text-2xl">→</span>
-                </div>
-              </div>
-            </a>
-          ))}
+              </Link>
+            ))}
+          </SlidingBox>
         </div>
       </section>
 
@@ -103,12 +113,3 @@ export default function Home() {
     </div>
   );
 }
-
-// 时间轴组件 - 纯CSS实现
-const TimelineItem = ({ date, content }: { date: string; content: string }) => (
-  <div className="relative pl-8 before:absolute before:left-0 before:h-full before:w-0.5 before:bg-blue-500">
-    <div className="absolute left-[-5px] top-0 w-4 h-4 bg-blue-500 rounded-full" />
-    <time className="text-sm text-gray-500 dark:text-gray-400">{date}</time>
-    <p className="mt-2 text-gray-700 dark:text-gray-300">{content}</p>
-  </div>
-);
