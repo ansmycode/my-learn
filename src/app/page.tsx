@@ -2,7 +2,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { docsMenu, HomeDescList } from "@/common/common";
+import { docsMenu } from "@/common/common";
 import SlidingBox from "@/components/SlidingBox";
 import TimelineItem from "@/components/TimelineItem";
 import { ArrowRight } from "lucide-react";
@@ -41,7 +41,7 @@ export default function Home() {
         </p>
       </section>
 
-      {/* 实验项目展示 - 纯CSS悬停效果 */}
+      {/* 实验展示 - 纯CSS悬停效果 */}
       <section className="max-w-6xl mx-auto px-4 pb-10">
         <h2 className="text-2xl font-bold mb-8 text-gray-800 dark:text-gray-200">
           最近的实验

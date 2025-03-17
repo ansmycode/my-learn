@@ -1,18 +1,17 @@
 "use client"; // 需客户端交互
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { docsMenu } from "@/common/common";
+import { useState } from "react";
 
-export default function DocsSidebar() {
+export default function Sidebar({ menuList }: { menuList: Array<any> }) {
   const pathname = usePathname();
-  const [menuList] = useState(docsMenu);
+  const [docsMenuList] = useState(menuList);
   const [menuActiveList, setMenuActiveList]: Array<any> = useState([2]);
-  console.log(menuActiveList);
+
   return (
     <aside className="w-48 border-r bg-white dark:bg-gray-800 overflow-y-auto">
       <nav className="pt-4 pb-4">
-        {menuList.map((section: DocsMenu) => (
+        {docsMenuList.map((section: DocsMenu) => (
           <div key={section.key} className="mb-6">
             <h3
               className="flex text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2 cursor-pointer items-center"

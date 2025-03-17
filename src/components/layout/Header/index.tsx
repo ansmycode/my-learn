@@ -18,13 +18,13 @@ export default function Header() {
               href="/docs"
               className="text-gray-700 dark:text-gray-300 hover:text-blue-600"
             >
-              文档
+              知识笔记
             </Link>
             <Link
-              href="/demos"
+              href="/lab"
               className="text-gray-700 dark:text-gray-300 hover:text-blue-600"
             >
-              Demos
+              Code Lab
             </Link>
             <Link
               href="/about"

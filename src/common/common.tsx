@@ -13,30 +13,6 @@ export const docsMenu: Array<DocsMenu> = [
         tags: ["JavaScript", "异步"],
         state: "Pendding",
       },
-      {
-        name: "test",
-        path: "/docs/test1",
-        title: "Promise 生命周期可视化2",
-        description: "终于看清微任务队列的执行顺序",
-        tags: ["JavaScript", "异步"],
-        state: "Pendding",
-      },
-      {
-        name: "test",
-        path: "/docs/test2",
-        title: "Promise 生命周期可视化3",
-        description: "终于看清微任务队列的执行顺序",
-        tags: ["JavaScript", "异步"],
-        state: "Pendding",
-      },
-      {
-        name: "test",
-        path: "/docs/test3",
-        title: "Promise 生命周期可视化4",
-        description: "终于看清微任务队列的执行顺序",
-        tags: ["JavaScript", "异步"],
-        state: "Pendding",
-      },
     ],
   },
   {
@@ -51,29 +27,28 @@ export const docsMenu: Array<DocsMenu> = [
         tags: ["React", "性能优化"],
         state: "Pendding",
       },
+    ],
+  },
+];
+
+export const DemoMenu: Array<any> = [
+  {
+    key: 1,
+    title: "JavaScript核心",
+    items: [
       {
-        name: "useMemo原理1",
-        path: "/docs/useMemo1",
-        title: "useMemo 缓存实验1",
-        description: "当数字达到5位数时，性能差异开始显现",
-        tags: ["React", "性能优化"],
-        state: "Pendding",
+        name: "Promise Lab",
+        path: "/lab/promise",
       },
+    ],
+  },
+  {
+    key: 2,
+    title: "React进阶",
+    items: [
       {
-        name: "useMemo原理2",
-        path: "/docs/useMem2",
-        title: "useMemo 缓存实验2",
-        description: "当数字达到5位数时，性能差异开始显现",
-        tags: ["React", "性能优化"],
-        state: "Pendding",
-      },
-      {
-        name: "useMemo原理3",
-        path: "/docs/useMemo3",
-        title: "useMemo 缓存实验3",
-        description: "当数字达到5位数时，性能差异开始显现",
-        tags: ["React", "性能优化"],
-        state: "Pendding",
+        name: "useMemo Lab",
+        path: "/lab/useMemo",
       },
     ],
   },

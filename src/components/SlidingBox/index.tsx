@@ -1,4 +1,3 @@
-// components/PagedSlider.tsx
 "use client";
 
 import {
@@ -42,8 +41,6 @@ export default function PagedSlider({
 
     setCardWidth(calculatedWidth);
     setMaxPages(Math.ceil(Children.count(children) / itemsPerPage) - 1);
-
-    console.log(cardWidth);
   };
 
   // 响应式布局更新
