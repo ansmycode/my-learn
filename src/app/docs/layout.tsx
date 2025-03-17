@@ -1,10 +1,11 @@
-import DocsSidebar from "@/components/layout/DocsSidebar";
+import Sidebar from "@/components/layout/Sidebar";
+import { docsMenu } from "@/common/common";
 import { ReactNode } from "react";
 
 export default function DocsLayout({ children }: { children: ReactNode }) {
   return (
     <div className="flex flex-1 overflow-hidden">
-      <DocsSidebar />
+      <Sidebar menuList={docsMenu} />
       <div className="flex-1 overflow-auto p-4 bg-gray-50 dark:bg-gray-900">
         {children}
       </div>

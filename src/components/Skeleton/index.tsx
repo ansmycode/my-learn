@@ -7,6 +7,7 @@ const Skeleton = ({
   count = 1,
   ...props
 }) => {
+  //text 文本 rect 矩形 circle 圆形
   const variants: { text: string; rect: string; circle: string } = {
     text: "h-4 w-full animate-pulse rounded bg-gray-200",
     rect: "h-20 w-full animate-pulse rounded bg-gray-200",
