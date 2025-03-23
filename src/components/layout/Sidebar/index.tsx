@@ -9,7 +9,7 @@ export default function Sidebar({ menuList }: { menuList: Array<any> }) {
   const [menuActiveList, setMenuActiveList]: Array<any> = useState([2]);
 
   return (
-    <aside className="w-48 border-r bg-white dark:bg-gray-800 overflow-y-auto">
+    <aside className="w-48 bg-white dark:bg-gray-800 overflow-y-auto">
       <nav className="pt-4 pb-4">
         {docsMenuList.map((section: DocsMenu) => (
           <div key={section.key} className="mb-6">
@@ -52,7 +52,7 @@ export default function Sidebar({ menuList }: { menuList: Array<any> }) {
                   <li key={item.path}>
                     <Link
                       href={item.path}
-                      className={`flex ml-3 px-3 py-2 rounded-lg ${
+                      className={`flex ml-3 px-3 py-2 rounded-lg text-sm ${
                         pathname === item.path
                           ? "bg-blue-100 text-blue-600 dark:bg-gray-700"
                           : "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"

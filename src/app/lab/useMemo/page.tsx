@@ -16,9 +16,10 @@ const Demo1 = dynamic(() => import("./demo1/demo1"), {
 
 const useMemoLab = () => {
   return (
-    <div className="p-5 py-4 bg-white shadow-sm">
+    <div className="p-5 pl-25 pr-25 py-4 bg-white shadow-sm whitespace-pre-wrap break-words text-sm">
       <DiyTitle text={"useMemo"} />
       <Demo1 />
+      <div className="w-80% h-px bg-gray-300 mb-4"></div>
     </div>
   );
 };

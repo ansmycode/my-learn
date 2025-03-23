@@ -5,10 +5,10 @@ const ThinkText = ({
   className,
 }: {
   children: ReactNode;
-  className: string;
+  className?: string;
 }) => {
   return (
-    <div className={`rounded-md bg-gray-100 p-4 ${className}`}>
+    <div className={`w-full rounded-md bg-gray-50 p-4 mt-3 mb-3  ${className}`}>
       <span>{children}</span>
     </div>
   );
