@@ -9,11 +9,11 @@ export default function Sidebar({ menuList }: { menuList: Array<any> }) {
   const [menuActiveList, setMenuActiveList]: Array<any> = useState([2]);
 
   return (
-    <aside className="w-48 bg-white dark:bg-gray-800 overflow-y-auto">
+    <aside className="fixed top-16 bottom-0 w-48 bg-white dark:bg-gray-800 overflow-hidden">
       <nav className="pt-4 pb-4">
         {docsMenuList.map((section: DocsMenu) => (
           <div key={section.key} className="mb-6">
-            <h3
+            <div
               className="flex text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2 cursor-pointer items-center"
               onClick={() => {
                 if (menuActiveList.includes(section.key)) {
@@ -45,7 +45,7 @@ export default function Sidebar({ menuList }: { menuList: Array<any> }) {
               </svg>
 
               <span>{section.title}</span>
-            </h3>
+            </div>
             {menuActiveList.includes(section.key) ? (
               <ul className="space-y-1">
                 {section.items.map((item) => (

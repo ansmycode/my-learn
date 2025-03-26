@@ -7,7 +7,7 @@ export default function DocsLayout({ children }: { children: ReactNode }) {
     <div className="flex flex-1 overflow-hidden">
       <Sidebar menuList={DemoMenu} />
 
-      <div className="flex-1 overflow-auto p-4 bg-gray-50 dark:bg-gray-900">
+      <div className="flex-1 overflow-auto p-4 ml-48 bg-gray-50 dark:bg-gray-900">
         {children}
       </div>
     </div>

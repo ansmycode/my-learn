@@ -1,21 +1,115 @@
+import { MdxTableLink, MdxNormalLink } from "@/components/MdxLink";
+
 ---
-title: "Next.js MDX 指南"
-description: "MDX 集成演示页面"
----
 
-# 欢迎使用 MDX 文档系统
+<b>Title</b>: 深入理解 useMemo Hook
 
-## MDX 的核心优势
+<b>Date</b>: 2024-05-20
 
-## Table
+## <b>Author</b>: 你的名字
 
-| a   | b   |   c |  d  |
-| --- | :-- | --: | :-: |
+# 🔄 useMemo - React 的缓存大师
 
-混合使用 **Markdown** 和 **React 组件**：
+<div className="text-gray-600 text-sm mb-8">
+  最后更新: {new Date().toLocaleDateString()}
+</div>
 
-##官方示例
+## 📌 一句话理解
 
-```tsx title="/src/components/Button.tsx"
-const cachedValue = useMemo(calculateValue, dependencies);
+`useMemo` 就像是给你的计算结果安了一个智能开关：**当依赖项不变时直接取缓存值，变化时才重新计算**。
+
+```tsx
+const 缓存值 = useMemo(计算函数, [依赖项]);
 ```
+
+## 🛠️ 核心作用
+
+### 解决什么问题？
+
+当组件频繁重新渲染时，避免重复执行高开销计算：
+
+```tsx
+// 没有优化的危险写法
+const 计算结果 = 超复杂计算函数(props数据); // 每次渲染都执行
+
+// 使用 useMemo 优化版
+const 计算结果 = useMemo(() => 超复杂计算函数(props数据), [props数据]); // 仅在props改变时执行
+```
+
+## 🎯 使用场景 && 💡 最佳实践
+
+### 应该什么时候使用？
+
+| 场景类型        | 典型示例          | 优化效果              | Demo                                               |
+| --------------- | ----------------- | --------------------- | -------------------------------------------------- |
+| 大数据计算      | 数组过滤/排序     | 减少不必要的 CPU 消耗 | <MdxTableLink src="/lab/useMemo" str="跳转示例" /> |
+| 组件 Props 传递 | 向下传递对象/数组 | 避免子组件无效重渲染  |                                                    |
+| 第三方库集成    | 图表配置/动画参数 | 防止意外重新初始化    |                                                    |
+| 依赖项对比      | 复杂对象作为依赖  | 精确控制更新时机      |                                                    |
+
+## ⚠️ **常见陷阱**
+
+```tsx
+// 错误 1：忘记依赖项
+const total = useMemo(() => a + b, [a]); // ❌ 当 b 变化时不会更新
+
+// 错误 2：滥用缓存
+const sum = useMemo(() => 1 + 2, []); // ❌ 简单计算反而更慢
+
+// 错误 3：副作用操作
+useMemo(() => {
+  fetchData(); // ❌ 副作用属于 useEffect
+}, []);
+```
+
+## 🚨 可能忽略的细节
+
+```tsx
+// 看似优化实则更糟的案例
+const data = useMemo(() => {
+  return props.items.filter(x => x > 10).map(transformFunc);
+}, [props.items]); // 当 transformFunc 变化时不会更新！
+
+// 正确写法应该包含所有依赖
+}, [props.items, transformFunc]);
+```
+
+## 🧠 高频面试题
+
+### 1.useMemo 和 useCallback 有什么区别？
+
+**useMemo** 缓存计算结果，**useCallback** 缓存函数本身
+
+**useCallback(fn, deps)** 等价于 **useMemo(() => fn, deps)**
+
+### 2.什么时候应该避免使用 useMemo？
+
+计算非常简单（如基本类型运算）
+
+依赖项频繁变化导致缓存失效
+
+### 3.为什么我的 useMemo 没有生效？
+
+检查：依赖项是否正确？计算函数是否真的昂贵？是否在渲染期间修改状态？
+
+## 📚 扩展阅读
+
+<ul>
+  <li>
+    <MdxNormalLink
+      src="https://zh-hans.react.dev/reference/react/useMemo"
+      str="React 官方文档 - useMemo( CN )"
+    />
+  </li>
+  <li>
+    <MdxNormalLink
+      src="https://kentcdodds.com/blog/usememo-and-usecallback"
+      str=" When to useMemo and useCallback( 需翻墙 )"
+    />
+  </li>
+</ul>
+
+<div className="mt-8 p-4 bg-blue-50 rounded-lg">
+  🚀 小贴士：在开发环境使用 <code>React.StrictMode</code> 时，useMemo
+  可能会执行两次，这是正常现象！
+</div>

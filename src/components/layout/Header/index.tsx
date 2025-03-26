@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Logo from "../../../../public/Logo.svg";
+import Image from "next/image";
 // import ThemeToggle from "./ThemeToggle"; // 暗黑模式切换组件
 
 export default function Header() {
@@ -8,7 +10,6 @@ export default function Header() {
         <div className="flex items-center h-16 justify-between">
           {/* 左侧Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <CodeBracketIcon className="h-6 w-6 text-blue-600" />
             <span className="text-xl font-bold dark:text-white">TechLab</span>
           </Link>
 
@@ -40,21 +41,8 @@ export default function Header() {
 }
 
 // SVG图标组件
-function CodeBracketIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth={1.5}
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"
-      />
-    </svg>
-  );
-}
+// function CodeBracketIcon(props: React.SVGProps<SVGSVGElement>) {
+//   return (
+
+//   );
+// }
