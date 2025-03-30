@@ -36,9 +36,9 @@ export default function Home() {
           </span>
         </h1>
 
-        <p className="max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-400 mb-12">
+        <div className="max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-400 mb-12">
           这里没有完美的解决方案，只有真实的实践过程。每个实验都始于"Why"的疑问，成于反复试错。
-        </p>
+        </div>
       </section>
 
       {/* 实验展示 - 纯CSS悬停效果 */}

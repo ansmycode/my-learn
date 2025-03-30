@@ -1,12 +1,15 @@
-import { MdxTableLink, MdxNormalLink } from "@/components/MdxLink";
-
----
+<link rel="stylesheet" href="styles.css" />
+import {
+  MdxTableLink,
+  MdxBtLineLink,
+  MdxNormalLink,
+} from "@/components/MdxComponents";
 
 <b>Title</b>: 深入理解 useMemo Hook
 
 <b>Date</b>: 2024-05-20
 
-## <b>Author</b>: 你的名字
+## <b>Author</b>: ansmycode
 
 # 🔄 useMemo - React 的缓存大师
 
@@ -92,17 +95,53 @@ const data = useMemo(() => {
 
 检查：依赖项是否正确？计算函数是否真的昂贵？是否在渲染期间修改状态？
 
+## 🤔 延伸思考：框架哲学差异与优化本质
+
+当我深入思考 React 的 useMemo 时，不可避免地需要将其置于前端框架的设计哲学坐标系中进行对比。
+以 Vue 作为参照对象，我们会发现两者在渲染机制上的根本性差异，以及由此产生的不同优化策略。
+
+| 特性             | React                        | Vue                       |
+| ---------------- | ---------------------------- | ------------------------- |
+| **更新触发机制** | 父组件渲染触发子组件递归渲染 | 依赖追踪触发精确更新      |
+| **数据响应原理** | 不可变数据 + 手动优化        | Proxy 代理 + 自动依赖收集 |
+| **组件更新粒度** | 组件级更新（默认）           | 元素级更新（默认）        |
+| **优化策略重心** | 开发者显式控制               | 框架自动优化              |
+
+### <MdxNormalLink src="/" str="如果你想要了解 Vue 的响应式原理" disabled />
+
+虽然 Vue 默认高效，但仍提供多层次优化手段：
+
+1. **v-once 指令** 静态内容渲染一次后不再更新
+
+2. **shallowRef** 与 **shallowReactive** 浅层响应式数据，避免深层变更触发渲染
+
+3. 或者直接在**setup**中手动控制渲染逻辑
+
+### 框架哲学碰撞
+
+| 维度             | React                | Vue              |
+| ---------------- | -------------------- | ---------------- |
+| **设计目标**     | 构建可预测的大型应用 | 快速开发高效应用 |
+| **优化心智模型** | "你掌控一切"         | "默认最优解"     |
+| **学习曲线**     | 陡峭但灵活           | 平缓但约束       |
+| **典型应用场景** | 复杂交互型应用       | 内容驱动型应用   |
+
+通过对比可见，React 的 useMemo 不是银弹，而是框架设计哲学下的必要工具,在获得更自由的掌控下同时也增加了更多的心智负担。
+Vue 的自动优化虽减轻心智负担，但也意味着放弃部分控制权。
+开发者应当理解底层机制，根据项目特点选择合适的优化策略，在工程效率与性能追求之间找到最佳平衡点。
+~~(或许这就是为什么笔者在逛一些论坛时有些人对 useMemo/useCallback 诟病的原因了,频繁的手动优化以及不可预估的需优化场景着实令人感觉麻烦)~~
+
 ## 📚 扩展阅读
 
 <ul>
   <li>
-    <MdxNormalLink
+    <MdxBtLineLink
       src="https://zh-hans.react.dev/reference/react/useMemo"
       str="React 官方文档 - useMemo( CN )"
     />
   </li>
   <li>
-    <MdxNormalLink
+    <MdxBtLineLink
       src="https://kentcdodds.com/blog/usememo-and-usecallback"
       str=" When to useMemo and useCallback( 需翻墙 )"
     />
@@ -111,5 +150,9 @@ const data = useMemo(() => {
 
 <div className="mt-8 p-4 bg-blue-50 rounded-lg">
   🚀 小贴士：在开发环境使用 <code>React.StrictMode</code> 时，useMemo
-  可能会执行两次，这是正常现象！
+  可能会执行两次，这是
+  <MdxNormalLink
+    src="https://zh-hans.react.dev/reference/react/StrictMode"
+    str="正常现象"
+  />！
 </div>

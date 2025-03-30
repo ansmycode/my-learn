@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @import 'highlight.js/styles/github-dark.css';
 
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -71,45 +70,81 @@ body {
   margin-bottom: -0.5rem;
 }
 
-pre {
+.mdx-prose pre {
   border-radius: 0 0 5rem 5rem !important;
 }
 
-table {
+.mdx-prose table {
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
 }
  
-th, td {
+.mdx-prose th, td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
 }
  
-th {
+.mdx-prose th {
   background-color: #f2f2f2;
 }
  
-h2{
-  font-size:1.25rem;
-  padding:1.1rem 0 1.1rem 0;
-  font-weight:600
+.mdx-prose h2{
+  font-weight:600;
+  font-size:1.3rem;
+  margin-top:1.5rem;
+  margin-bottom: 1rem;
+  color: #222;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5em;
+  /* margin:2rem 0 1.2rem 0;
+  border-bottom: 1px solid gray;
+  padding-bottom:0.3em */
 }
-h3{
+
+.mdx-prose h3{
   font-size:1.10rem;
-  padding:1.1rem 0 1.1rem 0;
+  margin:1.1rem 0 1.1rem 0;
   font-weight:600
 }
 
-code{
+.mdx-prose code{
   margin:1.1rem 0 1.1rem 0;
   border-radius: 1.05rem;
 }
 
-p{
-  margin:5px 0 5px 0;
+.mdx-prose p {
+  margin-bottom: 1rem; /* 段落间距 */
+  color: #444;
+  line-height:1.6;
 }
 
+/* 无序列表样式 */
+.mdx-prose ul {
+  list-style-type: disc; 
+  padding-left: 1.5em;
+  margin-bottom: 1.5em;
+}
+ 
+.mdx-prose ul li {
+  font-size: 16px;
+  margin-bottom: 0.5em;
+  color: #555;
+}
+ 
+/* 有序列表样式 */
+.mdx-prose ol {
+  list-style-type: decimal;
+  padding-left: 1.5em;
+  margin-bottom: 1.5em;
+}
+ 
+.mdx-prose ol li {
+  margin-bottom: 0.5em;
+  color: #555;
+}
 
-
+.mdex-prose a{
+  color: #087EA4;
+}
